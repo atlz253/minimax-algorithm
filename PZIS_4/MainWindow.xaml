@@ -12,6 +12,8 @@
             <RowDefinition Height="150px"/>
         </Grid.RowDefinitions>
         <Canvas Grid.Row="0" x:Name="canvas"  />
-        <TextBlock Grid.Row="1" x:Name="log" Background="#FF101010" Foreground="#FF008E23" />
+        <ScrollViewer Grid.Row="1" >
+            <TextBlock x:Name="log" Background="#FF101010" Foreground="#FF008E23" />
+        </ScrollViewer>
     </Grid>
 </Window>
