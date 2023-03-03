@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PZIS_4", "PZIS_4\PZIS_4.csproj", "{A6C84BB5-E1EB-4466-B4D6-8A7F90AC05BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6C84BB5-E1EB-4466-B4D6-8A7F90AC05BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6C84BB5-E1EB-4466-B4D6-8A7F90AC05BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6C84BB5-E1EB-4466-B4D6-8A7F90AC05BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6C84BB5-E1EB-4466-B4D6-8A7F90AC05BC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6B61E6C-ACE1-413D-BBBB-ACC344F09D16}
+	EndGlobalSection
+EndGlobal
