@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PZIS_4
@@ -20,17 +11,45 @@ namespace PZIS_4
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Node root;
+
+        private const int windowHeight = 720;
+        private const int windowWidth = 1280;
+
         public MainWindow()
         {
             InitializeComponent();
 
-            Ellipse ellipse = new();
+            root = InitTree();
 
-            ellipse.Fill = Brushes.Black;
-            ellipse.Width = 100;
-            ellipse.Height = 100;
+            DrawTree();
+        }
+
+        private Node InitTree()
+        {
+            Node root = new();
+
+            root.Add(new());
+            root.Add(new());
+            root.Add(new());
+
+            return root;
+        }
+
+        private void Log(string message) => log.Text = $"\t{DateTime.Now}: {message}\n{log.Text}";
+
+        private void DrawTree()
+        {
+            Ellipse ellipse = new()
+            {
+                Stroke = Brushes.Black,
+                Width = 30,
+                Height = 30
+            };
 
             canvas.Children.Add(ellipse);
+
+            Canvas.SetLeft(ellipse, windowWidth / 2 - ellipse.Width / 2);
         }
     }
 }

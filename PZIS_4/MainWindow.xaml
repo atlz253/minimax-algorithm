@@ -5,8 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PZIS_4"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="720" Width="1280" ResizeMode="NoResize">
     <Grid>
-        <Canvas x:Name="canvas"  />
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="150px"/>
+        </Grid.RowDefinitions>
+        <Canvas Grid.Row="0" x:Name="canvas"  />
+        <TextBlock Grid.Row="1" x:Name="log" Background="#FF101010" Foreground="#FF008E23" />
     </Grid>
 </Window>
