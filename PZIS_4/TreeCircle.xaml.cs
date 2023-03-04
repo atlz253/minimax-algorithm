@@ -12,6 +12,8 @@ namespace PZIS_4
 
         private Vector2 center = Vector2.Zero;
 
+        private Node? model;
+
         /// <summary>
         /// Центр окружности
         /// </summary>
@@ -27,6 +29,13 @@ namespace PZIS_4
 
                 Canvas.SetTop(this, center.Y - CircleRadius);
             }
+        }
+
+        public Node? Model
+        {
+            get => model;
+
+            set => model = value;
         }
 
         public TreeCircle()

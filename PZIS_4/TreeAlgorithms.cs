@@ -1,4 +1,6 @@
-﻿namespace PZIS_4
+﻿using System.Collections.Generic;
+
+namespace PZIS_4
 {
     /// <summary>
     /// Предоставляет доступ к алгоритмам для работы с деревьями
@@ -11,21 +13,23 @@
         /// <param name="root">Узел</param>
         /// <param name="level">Уровень дерева</param>
         /// <returns>Количество найденных узлов</returns>
-        public static int GetNodeLevelCount(Node root, int level)
+        public static List<Node> GetLevelNodes(Node root, int level)
         {
-            int count = 0;
+            List<Node> nodes = new();
 
             if (level == 0)
             {
-                return 1;
+                nodes.Add(root);
+
+                return nodes;
             }
 
             foreach (Node node in root.Childrens)
             {
-                count += GetNodeLevelCount(node, level - 1);
+                nodes.AddRange(GetLevelNodes(node, level - 1));
             }
 
-            return count;
+            return nodes;
         }
 
         /// <summary>
