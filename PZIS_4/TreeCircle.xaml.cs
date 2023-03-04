@@ -52,9 +52,17 @@ namespace PZIS_4
         /// </summary>
         public void SetColor()
         {
-            if (model!= null && model.IsIncludedNode)
+            if (model!= null)
             {
-                ellipse.Fill = Brushes.GreenYellow;
+                if (model.IsIncludedNode)
+                {
+                    ellipse.Fill = Brushes.GreenYellow;
+                }
+
+                if (!model.IsNotPruningNode)
+                {
+                    ellipse.Fill = Brushes.Red;
+                }
             }
         }
 
