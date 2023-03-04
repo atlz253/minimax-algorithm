@@ -16,6 +16,7 @@ namespace PZIS_4
         private readonly List<Node> childrens = new();
 
         private bool isIncludedNode = false;
+        private bool isNotPruningNode = false;
 
         /// <summary>
         /// Дочерние узлы
@@ -50,6 +51,15 @@ namespace PZIS_4
             get => isIncludedNode;
 
             set => isIncludedNode = value;
+        }
+
+        /// <summary>
+        /// Был ли узел отсечен при альфа-бета отсечении
+        /// </summary>
+        public bool IsNotPruningNode
+        {
+            get => isNotPruningNode;
+            set => isNotPruningNode = value;
         }
 
         public Node()
