@@ -9,8 +9,6 @@ namespace PZIS_4
     /// </summary>
     internal static class TreeCanvasDrawer
     {
-        private const int circleRadius = 15; // Радиус круга дерева
-
         private const int nodesLevelMargin = 50; // Отступ между уровнями древа
 
         public static void Draw(Canvas canvas, int canvasWidth, Node root)
@@ -25,22 +23,15 @@ namespace PZIS_4
 
                 Logger.Log($"Количество узлов на уровне {i}: {nodesCount}");
 
-                int nodesMargin = (canvasWidth - circleRadius * 2 * nodesCount) / (nodesCount + 1);
+                int nodesMargin = (canvasWidth - TreeCircle.CircleRadius * 2 * nodesCount) / (nodesCount + 1);
 
                 for (int j = 0; j < nodesCount; j++)
                 {
-                    Ellipse ellipse = new()
-                    {
-                        Stroke = Brushes.Black,
-                        Width = circleRadius * 2,
-                        Height = circleRadius * 2
-                    };
+                    TreeCircle treeCircle = new();
 
-                    canvas.Children.Add(ellipse);
+                    canvas.Children.Add(treeCircle);
 
-                    Canvas.SetLeft(ellipse, nodesMargin + nodesMargin * j + circleRadius * 2 * j);
-
-                    Canvas.SetTop(ellipse, (circleRadius * 2 + nodesLevelMargin) * i);
+                    treeCircle.Center = new(nodesMargin * (j + 1) + TreeCircle.CircleRadius * (2 * j + 1), nodesLevelMargin + TreeCircle.CircleRadius + (TreeCircle.CircleRadius * 2 + nodesLevelMargin) * i);
                 }
             }
         }
