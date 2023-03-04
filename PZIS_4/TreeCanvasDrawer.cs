@@ -60,6 +60,15 @@ namespace PZIS_4
                     treeCircle.Center = new(nodesMargin * (j + 1) + TreeCircle.CircleRadius * (2 * j + 1), nodesLevelMargin + TreeCircle.CircleRadius + (TreeCircle.CircleRadius * 2 + nodesLevelMargin) * i);
 
                     treeCircles.Add(treeCircle);
+
+                    if (treeCircle.Model.Value == Node.UndifinedValue)
+                    {
+                        treeCircle.textBox.IsEnabled = false;
+                    }
+                    else
+                    {
+                        treeCircle.textBox.Text = treeCircle.Model.Value.ToString();
+                    }
                 }
             }
 

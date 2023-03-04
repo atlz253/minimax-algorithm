@@ -7,7 +7,9 @@ namespace PZIS_4
     /// </summary>
     public class Node
     {
-        int value = int.MaxValue; // int.MaxValue - у узла неизвестное значение
+        public const int UndifinedValue = int.MaxValue; // Неизвестное значение узла
+
+        private int value = UndifinedValue;
 
         private Node? parent;
 
@@ -26,6 +28,26 @@ namespace PZIS_4
             get => parent;
 
             private set => parent = value;
+        }
+
+        /// <summary>
+        /// Значение узла
+        /// </summary>
+        public int Value
+        {
+            get => value;
+
+            set => this.value = value;
+        }
+
+        public Node()
+        {
+
+        }
+
+        public Node(int value) : base()
+        {
+            Value = value;
         }
 
         /// <summary>

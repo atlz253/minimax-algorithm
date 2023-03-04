@@ -31,12 +31,20 @@ namespace PZIS_4
             }
         }
 
+        /// <summary>
+        /// Модель узла
+        /// </summary>
         public Node? Model
         {
             get => model;
 
             set => model = value;
         }
+
+        /// <summary>
+        /// Поле для ввода значений
+        /// </summary>
+        public TextBox TextBox => textBox;
 
         public TreeCircle()
         {
