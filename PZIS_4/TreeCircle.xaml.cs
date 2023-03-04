@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PZIS_4
 {
@@ -45,6 +46,17 @@ namespace PZIS_4
         /// Поле для ввода значений
         /// </summary>
         public TextBox TextBox => textBox;
+
+        /// <summary>
+        /// Устанавливает цвет узла
+        /// </summary>
+        public void SetColor()
+        {
+            if (model!= null && model.IsIncludedNode)
+            {
+                ellipse.Fill = Brushes.GreenYellow;
+            }
+        }
 
         public TreeCircle()
         {

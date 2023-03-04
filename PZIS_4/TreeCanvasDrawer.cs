@@ -69,6 +69,8 @@ namespace PZIS_4
                     {
                         treeCircle.textBox.Text = treeCircle.Model.Value.ToString();
                     }
+
+                    treeCircle.SetColor();
                 }
             }
 

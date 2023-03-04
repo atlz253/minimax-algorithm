@@ -26,7 +26,7 @@ namespace PZIS_4
 
             TreeCanvasDrawer.Draw(canvas, windowWidth, root);
 
-            TreeAlgorithms.MinMaxAlgoritm(root, true);
+            TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MinMaxAlgoritm(root, true));
 
             TreeCanvasDrawer.Draw(canvas, windowWidth, root);
         }

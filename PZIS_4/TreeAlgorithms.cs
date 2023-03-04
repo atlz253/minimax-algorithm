@@ -101,5 +101,25 @@ namespace PZIS_4
 
             return root.Value;
         }
+
+        /// <summary>
+        /// Изменяет цвет узла, в зависимости от того, входит ли тот в решение
+        /// </summary>
+        /// <param name="root">Корень дерева</param>
+        /// <param name="value">Значение решения</param>
+        public static void ChangeNodeColor(Node root, int value)
+        {
+            root.IsIncludedNode = true;
+
+            foreach (Node node in root.Childrens)
+            {
+                if (node.Value == value)
+                {
+                    ChangeNodeColor(node, value);
+
+                    return;
+                }
+            }
+        }
     }
 }

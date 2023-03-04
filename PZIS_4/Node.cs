@@ -15,6 +15,8 @@ namespace PZIS_4
 
         private readonly List<Node> childrens = new();
 
+        private bool isIncludedNode = false;
+
         /// <summary>
         /// Дочерние узлы
         /// </summary>
@@ -40,6 +42,16 @@ namespace PZIS_4
             set => this.value = value;
         }
 
+        /// <summary>
+        /// Включен ли узел в итоговое решение
+        /// </summary>
+        public bool IsIncludedNode
+        {
+            get => isIncludedNode;
+
+            set => isIncludedNode = value;
+        }
+
         public Node()
         {
 
@@ -57,7 +69,7 @@ namespace PZIS_4
         public void Add(Node node)
         {
             childrens.Add(node);
-            
+
             node.Parent = this;
         }
 
