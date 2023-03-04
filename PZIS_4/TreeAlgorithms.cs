@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PZIS_4
 {
@@ -62,6 +63,8 @@ namespace PZIS_4
         /// <returns>Значение узла</returns>
         public static int MinMaxAlgoritm(Node root, bool IsMax)
         {
+            root.IsNotPruningNode = true;
+
             int min = int.MaxValue;
             int max = int.MinValue;
 
@@ -120,6 +123,179 @@ namespace PZIS_4
                     return;
                 }
             }
+        }
+
+        public readonly struct AlphaBetaAndValue
+        {
+            private readonly int alphaBeta;
+            private readonly int value;
+
+            public int AlphaBeta { get { return alphaBeta; } }
+            public int Value { get { return value; } }
+
+            public AlphaBetaAndValue(int alphaBeta, int value)
+            {
+                this.alphaBeta = alphaBeta;
+                this.value = value;
+            }
+        }
+
+        /// <summary>
+        /// Минимакс алгоритм
+        /// </summary>
+        /// <param name="root">Корень дерева</param>
+        /// <param name="IsMax">Минимум или максимум ищется на уровне</param>
+        /// <returns>Значение узла</returns>
+        public static AlphaBetaAndValue AlphaBetaPruningAlgoritm(Node root, bool IsMax, int alpha, int beta)
+        {
+            int val = 0;
+
+            root.IsNotPruningNode = true;
+
+            if (root.Childrens.Count == 0)
+            {
+                return new(root.Value, root.Value);
+            }
+
+            foreach (Node node in root.Childrens)
+            {
+                AlphaBetaAndValue value = AlphaBetaPruningAlgoritm(node, !IsMax, alpha, beta);
+
+                if (IsMax)
+                {
+                    if (alpha < value.AlphaBeta)
+                    {
+                        alpha = value.AlphaBeta;
+                        val = value.Value;
+                    }
+                }
+                else
+                {
+                    if (beta > value.AlphaBeta)
+                    {
+                        beta = value.AlphaBeta;
+                        val = value.Value;
+                    }
+                }
+
+                if (IsMax)
+                {
+                    if (beta >= alpha && beta != int.MaxValue && alpha != int.MinValue)
+                    {
+                        root.Value = val;
+                        return new(beta, val);
+                    }
+                }
+                else
+                {
+                    if (beta <= alpha && beta != int.MaxValue && alpha != int.MinValue)
+                    {
+                        root.Value = val;
+                        return new(alpha, val);
+                    }
+                }
+            }
+
+            if (IsMax)
+            {
+                root.Value = val;
+                return new(alpha, root.Value);
+            }
+            else
+            {
+                root.Value = val;
+                return new(beta, root.Value);
+            }
+        }
+
+        /// <summary>
+        /// Алгоритм альфа-бета отсечения для максимумов
+        /// </summary>
+        /// <param name="root">Корень дерева</param>
+        /// <param name="alpha">Альфа</param>
+        /// <param name="beta">Бета</param>
+        /// <returns>Значение узла</returns>
+        public static int MaxValue(Node root, int alpha, int beta)
+        {
+            root.IsNotPruningNode = true;
+
+            if (root.Childrens.Count == 0)
+            {
+                return root.Value;
+            }
+
+            int value = int.MinValue;
+
+            foreach (Node child in root.Childrens)
+            {
+                int newValue = MinValue(child, alpha, beta);
+
+                if (newValue > value)
+                {
+                    value = newValue;
+                }
+
+                if(newValue >= beta)
+                {
+                    root.Value = value;
+
+                    return value;
+                }
+
+                if(newValue > alpha)
+                {
+                    alpha = newValue;
+                }
+            }
+
+            root.Value = value;
+
+            return value;
+        }
+
+        /// <summary>
+        /// Алгоритм альфа-бета отсечения для минимумов
+        /// </summary>
+        /// <param name="root">Корень дерева</param>
+        /// <param name="alpha">Альфа</param>
+        /// <param name="beta">Бета</param>
+        /// <returns>Значение узла</returns>
+        public static int MinValue(Node root, int alpha, int beta)
+        {
+            root.IsNotPruningNode = true;
+
+            if (root.Childrens.Count == 0)
+            {
+                return root.Value;
+            }
+
+            int value = int.MaxValue;
+
+            foreach (Node child in root.Childrens)
+            {
+                int newValue = MaxValue(child, alpha, beta);
+
+                if (newValue < value)
+                {
+                    value = newValue;
+                }
+
+                if (newValue <= alpha)
+                {
+                    root.Value = value;
+
+                    return value;
+                }
+
+                if (newValue < beta)
+                {
+                    beta = newValue;
+                }
+            }
+
+            root.Value = value;
+
+            return value;
         }
     }
 }
