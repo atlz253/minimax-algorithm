@@ -25,6 +25,10 @@ namespace PZIS_4
             root = TreeFactory.BuildTree_2();
 
             TreeCanvasDrawer.Draw(canvas, windowWidth, root);
+
+            TreeAlgorithms.MinMaxAlgoritm(root, true);
+
+            TreeCanvasDrawer.Draw(canvas, windowWidth, root);
         }
     }
 }

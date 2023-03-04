@@ -53,5 +53,53 @@ namespace PZIS_4
 
             return count + 1;
         }
+
+        /// <summary>
+        /// Минимакс алгоритм
+        /// </summary>
+        /// <param name="root">Корень дерева</param>
+        /// <param name="IsMax">Минимум или максимум ищется на уровне</param>
+        /// <returns>Значение узла</returns>
+        public static int MinMaxAlgoritm(Node root, bool IsMax)
+        {
+            int min = int.MaxValue;
+            int max = int.MinValue;
+
+            if (root.Childrens.Count == 0)
+            {
+                return root.Value;
+            }
+
+            foreach (Node node in root.Childrens)
+            {
+                int value = MinMaxAlgoritm(node, !IsMax);
+
+                if (IsMax)
+                {
+                    if (max < value)
+                    {
+                        max = value;
+                    }
+                }
+                else
+                {
+                    if (min > value)
+                    {
+                        min = value;
+                    }
+                }
+            }
+
+            if (IsMax)
+            {
+                root.Value = max;
+            }
+            else
+            {
+                root.Value = min;
+            }
+
+            return root.Value;
+        }
     }
 }
