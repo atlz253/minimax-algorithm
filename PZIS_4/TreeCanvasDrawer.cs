@@ -68,6 +68,11 @@ namespace PZIS_4
                     else
                     {
                         treeCircle.textBox.Text = treeCircle.Model.Value.ToString();
+
+                        if (treeCircle.Model.Childrens.Count != 0)
+                        {
+                            treeCircle.textBox.IsReadOnly = true;
+                        }
                     }
 
                     treeCircle.SetColor();
