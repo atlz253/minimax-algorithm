@@ -80,5 +80,26 @@ namespace PZIS_4
         {
             InitializeComponent();
         }
+
+        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (Model == null)
+            {
+                return;
+            }
+
+            if (int.TryParse(textBox.Text, out int value))
+            {
+                Model.Value = value;
+            }
+            else if (textBox.Text == string.Empty)
+            {
+                Model.Value = 0;
+            }
+            else
+            {
+                textBox.Text = Model.Value.ToString();
+            }
+        }
     }
 }
