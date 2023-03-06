@@ -114,7 +114,7 @@ namespace PZIS_4
             {
                 root.IsSkiped = true;
             }
-            else if (root.Value == value)
+            else if (root.Value == value && (root.Parent == null || root.Parent.IsSolutionNode))
             {
                 root.IsSolutionNode = true;
             }
