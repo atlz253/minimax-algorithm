@@ -132,7 +132,7 @@ namespace PZIS_4
         /// <param name="alpha">Альфа</param>
         /// <param name="beta">Бета</param>
         /// <returns>Значение узла</returns>
-        public static int MaxValue(Node root, int alpha, int beta)
+        public static int MaxValue(Node root, int alpha = int.MinValue, int beta = int.MaxValue)
         {
             root.IsNotPruningNode = true;
 

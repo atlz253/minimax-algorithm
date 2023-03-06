@@ -37,11 +37,11 @@
                     <RadioButton Content="Прямой" VerticalAlignment="Center" Margin="10,3,10,0" GroupName="moveOrder" IsChecked="True"/>
                     <RadioButton Content="Обратный" VerticalAlignment="Center" Margin="10,3,10,0" GroupName="moveOrder"/>
                 </StackPanel>
-                <ComboBox Grid.Row="2" Margin="10,5,5,10" SelectedIndex="0">
-                    <sys:String>Минимаксный алгоритм</sys:String>
-                    <sys:String>Минимаксный алгоритм с альфа-бета отсечениями</sys:String>
+                <ComboBox x:Name="algorithmsBox" Grid.Row="2" Margin="10,5,5,10" SelectedIndex="0">
+                    <sys:String>минимаксный алгоритм</sys:String>
+                    <sys:String>минимаксный алгоритм с альфа-бета отсечениями</sys:String>
                 </ComboBox>
-                <Button Grid.Row="3" Margin="10,5,5,10">Поехали!</Button>
+                <Button Grid.Row="3" Margin="10,5,5,10" Click="Button_Click">Поехали!</Button>
             </Grid>
         </Grid>
     </Grid>

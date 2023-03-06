@@ -25,12 +25,25 @@ namespace PZIS_4
             root = TreeFactory.BuildTree_2();
 
             TreeCanvasDrawer.Draw(canvas, windowWidth, root);
+        }
 
-            //TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MinMaxAlgoritm(root, true));
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string item = (string)algorithmsBox.SelectedItem;
 
-            int alpha = int.MinValue;
-            int beta = int.MaxValue;
-            TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MaxValue(root, alpha, beta));
+            Logger.Log($"Запущен {item}");
+
+            switch (item)
+            {
+                case "минимаксный алгоритм":
+                    TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MinMaxAlgoritm(root, true));
+
+                    break;
+                case "минимаксный алгоритм с альфа-бета отсечениями":
+                    TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MaxValue(root));
+
+                    break;
+            }
 
             TreeCanvasDrawer.Draw(canvas, windowWidth, root);
         }
