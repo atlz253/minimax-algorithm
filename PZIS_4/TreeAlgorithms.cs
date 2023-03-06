@@ -141,8 +141,17 @@ namespace PZIS_4
 
             int value = int.MinValue;
 
+            bool betaFound = false;
+
             foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
+                if (betaFound)
+                {
+                    child.IsSkiped = true;
+
+                    continue;
+                }
+
                 int newValue = MinValue(child, direction, alpha, beta);
 
                 if (newValue > value)
@@ -152,9 +161,9 @@ namespace PZIS_4
 
                 if(newValue >= beta)
                 {
-                    root.Value = value;
+                    betaFound = true;
 
-                    return value;
+                    continue;
                 }
 
                 if(newValue > alpha)
@@ -184,8 +193,17 @@ namespace PZIS_4
 
             int value = int.MaxValue;
 
+            bool alphaFound = false;
+
             foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
+                if (alphaFound)
+                {
+                    child.IsSkiped = true;
+
+                    continue;
+                }
+
                 int newValue = MaxValue(child, direction, alpha, beta);
 
                 if (newValue < value)
@@ -195,9 +213,9 @@ namespace PZIS_4
 
                 if (newValue <= alpha)
                 {
-                    root.Value = value;
+                    alphaFound = true;
 
-                    return value;
+                    continue;
                 }
 
                 if (newValue < beta)
