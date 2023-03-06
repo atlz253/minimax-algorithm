@@ -61,7 +61,7 @@ namespace PZIS_4
         /// <param name="root">Корень дерева</param>
         /// <param name="IsMax">Минимум или максимум ищется на уровне</param>
         /// <returns>Значение узла</returns>
-        public static int MinMaxAlgoritm(Node root, bool IsMax)
+        public static int MinMaxAlgoritm(Node root, bool IsMax, bool direction)
         {
             int min = int.MaxValue;
             int max = int.MinValue;
@@ -71,9 +71,9 @@ namespace PZIS_4
                 return root.Value;
             }
 
-            foreach (Node node in root.Childrens)
+            foreach (Node node in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                int value = MinMaxAlgoritm(node, !IsMax);
+                int value = MinMaxAlgoritm(node, !IsMax, direction);
 
                 if (IsMax)
                 {
@@ -132,7 +132,7 @@ namespace PZIS_4
         /// <param name="alpha">Альфа</param>
         /// <param name="beta">Бета</param>
         /// <returns>Значение узла</returns>
-        public static int MaxValue(Node root, int alpha = int.MinValue, int beta = int.MaxValue)
+        public static int MaxValue(Node root, bool direction, int alpha = int.MinValue, int beta = int.MaxValue)
         {
             if (root.Childrens.Count == 0)
             {
@@ -141,9 +141,9 @@ namespace PZIS_4
 
             int value = int.MinValue;
 
-            foreach (Node child in root.Childrens)
+            foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                int newValue = MinValue(child, alpha, beta);
+                int newValue = MinValue(child, direction, alpha, beta);
 
                 if (newValue > value)
                 {
@@ -175,7 +175,7 @@ namespace PZIS_4
         /// <param name="alpha">Альфа</param>
         /// <param name="beta">Бета</param>
         /// <returns>Значение узла</returns>
-        public static int MinValue(Node root, int alpha = int.MinValue, int beta = int.MaxValue)
+        public static int MinValue(Node root, bool direction, int alpha = int.MinValue, int beta = int.MaxValue)
         {
             if (root.Childrens.Count == 0)
             {
@@ -184,9 +184,9 @@ namespace PZIS_4
 
             int value = int.MaxValue;
 
-            foreach (Node child in root.Childrens)
+            foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                int newValue = MaxValue(child, alpha, beta);
+                int newValue = MaxValue(child, direction, alpha, beta);
 
                 if (newValue < value)
                 {

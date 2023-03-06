@@ -34,7 +34,7 @@
                 </StackPanel>
                 <StackPanel Grid.Row="1" Orientation="Horizontal">
                     <Label Content="Порядок обхода:" VerticalAlignment="Center" Margin="6,0,0,0" />
-                    <RadioButton x:Name="directMoverRadio" Content="Прямой" VerticalAlignment="Center" Margin="10,3,10,0" GroupName="moveOrder" IsChecked="True"/>
+                    <RadioButton x:Name="directMoveRadio" Content="Прямой" VerticalAlignment="Center" Margin="10,3,10,0" GroupName="moveOrder" IsChecked="True"/>
                     <RadioButton Content="Обратный" VerticalAlignment="Center" Margin="10,3,10,0" GroupName="moveOrder"/>
                 </StackPanel>
                 <ComboBox x:Name="algorithmsBox" Grid.Row="2" Margin="10,5,5,10" SelectedIndex="0">
