@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PZIS_4"
+        xmlns:local="clr-namespace:PZIS_4" xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="720" Width="1280" ResizeMode="NoResize">
     <Grid>
@@ -12,8 +12,31 @@
             <RowDefinition Height="150px"/>
         </Grid.RowDefinitions>
         <Canvas Grid.Row="0" x:Name="canvas"  />
-        <ScrollViewer Grid.Row="1" >
-            <TextBlock x:Name="log" Background="#FF101010" Foreground="#FF008E23" />
-        </ScrollViewer>
+        <Grid  Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="350"/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Grid.Column="0" >
+                <TextBlock x:Name="log" Background="#FF101010" Foreground="#FF008E23" />
+            </ScrollViewer>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Label Content="Порядок ходов:" VerticalAlignment="Center" Margin="6,0,0,0" />
+                    <RadioButton Content="Max" VerticalAlignment="Center" Margin="10,3,10,0" GroupName="moveOrder" IsChecked="True"/>
+                    <RadioButton Content="Min" VerticalAlignment="Center" Margin="10,3,10,0" GroupName="moveOrder"/>
+                </StackPanel>
+                <ComboBox Grid.Row="1" Margin="10,10,10,10" SelectedIndex="0">
+                    <sys:String>Минимаксный алгоритм</sys:String>
+                    <sys:String>Минимаксный алгоритм с альфа-бета отсечениями</sys:String>
+                </ComboBox>
+                <Button Grid.Row="2" Margin="10,10,10,10">Поехали!</Button>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
