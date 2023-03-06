@@ -39,7 +39,12 @@ namespace PZIS_4
         {
             get => model;
 
-            set => model = value;
+            set
+            {
+                model = value;
+
+                UpdateColor();
+            }
         }
 
         /// <summary>
@@ -50,19 +55,24 @@ namespace PZIS_4
         /// <summary>
         /// Устанавливает цвет узла
         /// </summary>
-        public void SetColor()
+        private void UpdateColor()
         {
-            if (model!= null)
+            if (model == null)
             {
-                if (model.IsIncludedNode)
-                {
-                    ellipse.Fill = Brushes.GreenYellow;
-                }
+                return;
+            }
 
-                if (!model.IsNotPruningNode)
-                {
-                    ellipse.Fill = Brushes.Red;
-                }
+            if (model.IsSolutionNode)
+            {
+                ellipse.Fill = Brushes.GreenYellow;
+            }
+            else if (model.IsSkiped)
+            {
+                ellipse.Fill = Brushes.Red;
+            }
+            else
+            {
+                ellipse.Fill = Brushes.LightGray;
             }
         }
 

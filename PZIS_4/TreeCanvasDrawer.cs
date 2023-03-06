@@ -21,6 +21,8 @@ namespace PZIS_4
         /// <param name="root">Корень дерева</param>
         public static void Draw(Canvas canvas, int canvasWidth, Node root)
         {
+            canvas.Children.Clear();
+
             List<TreeCircle> treeCircles = DrawTreeCircles(canvas, canvasWidth, root);
 
             DrawLines(canvas, treeCircles);
@@ -74,8 +76,6 @@ namespace PZIS_4
                             treeCircle.textBox.IsReadOnly = true;
                         }
                     }
-
-                    treeCircle.SetColor();
                 }
             }
 

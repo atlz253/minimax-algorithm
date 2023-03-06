@@ -29,6 +29,8 @@ namespace PZIS_4
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            root.Clear();
+
             string item = (string)algorithmsBox.SelectedItem;
 
             Logger.Log($"Запущен {item}");

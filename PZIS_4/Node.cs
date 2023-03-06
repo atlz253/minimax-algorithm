@@ -16,7 +16,7 @@ namespace PZIS_4
         private readonly List<Node> childrens = new();
 
         private bool isIncludedNode = false;
-        private bool isNotPruningNode = false;
+        private bool isSkiped = false;
 
         /// <summary>
         /// Дочерние узлы
@@ -46,7 +46,7 @@ namespace PZIS_4
         /// <summary>
         /// Включен ли узел в итоговое решение
         /// </summary>
-        public bool IsIncludedNode
+        public bool IsSolutionNode
         {
             get => isIncludedNode;
 
@@ -54,12 +54,13 @@ namespace PZIS_4
         }
 
         /// <summary>
-        /// Был ли узел отсечен при альфа-бета отсечении
+        /// Был ли узел пропущен?
         /// </summary>
-        public bool IsNotPruningNode
+        public bool IsSkiped
         {
-            get => isNotPruningNode;
-            set => isNotPruningNode = value;
+            get => isSkiped;
+
+            set => isSkiped = value;
         }
 
         public Node()
@@ -92,6 +93,25 @@ namespace PZIS_4
             childrens.Remove(node);
 
             node.Parent = null;
+        }
+
+        /// <summary>
+        /// Очищает узел после предыдущих алгоритмов
+        /// </summary>
+        public void Clear()
+        {
+            isIncludedNode = false;
+            isSkiped = false;
+
+            if (Childrens.Count != 0)
+            {
+                Value = UndifinedValue;
+            }
+
+            foreach (Node node in Childrens)
+            {
+                node.Clear();
+            }
         }
     }
 }

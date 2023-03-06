@@ -63,8 +63,6 @@ namespace PZIS_4
         /// <returns>Значение узла</returns>
         public static int MinMaxAlgoritm(Node root, bool IsMax)
         {
-            root.IsNotPruningNode = true;
-
             int min = int.MaxValue;
             int max = int.MinValue;
 
@@ -110,18 +108,20 @@ namespace PZIS_4
         /// </summary>
         /// <param name="root">Корень дерева</param>
         /// <param name="value">Значение решения</param>
-        public static void ChangeNodeColor(Node root, int value)
+        public static void ChangeNodeColor(Node root, int value, bool skip = false)
         {
-            root.IsIncludedNode = true;
+            if (skip || root.Value == Node.UndifinedValue)
+            {
+                root.IsSkiped = true;
+            }
+            else if (root.Value == value)
+            {
+                root.IsSolutionNode = true;
+            }
 
             foreach (Node node in root.Childrens)
             {
-                if (node.Value == value)
-                {
-                    ChangeNodeColor(node, value);
-
-                    return;
-                }
+                ChangeNodeColor(node, value, root.IsSkiped);
             }
         }
 
@@ -134,8 +134,6 @@ namespace PZIS_4
         /// <returns>Значение узла</returns>
         public static int MaxValue(Node root, int alpha = int.MinValue, int beta = int.MaxValue)
         {
-            root.IsNotPruningNode = true;
-
             if (root.Childrens.Count == 0)
             {
                 return root.Value;
@@ -179,8 +177,6 @@ namespace PZIS_4
         /// <returns>Значение узла</returns>
         public static int MinValue(Node root, int alpha, int beta)
         {
-            root.IsNotPruningNode = true;
-
             if (root.Childrens.Count == 0)
             {
                 return root.Value;
