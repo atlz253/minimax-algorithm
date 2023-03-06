@@ -38,11 +38,11 @@ namespace PZIS_4
             switch (item)
             {
                 case "минимаксный алгоритм":
-                    TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MinMaxAlgoritm(root, true));
+                    TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MinMaxAlgoritm(root, (bool)maxTurnRadio.IsChecked));
 
                     break;
                 case "минимаксный алгоритм с альфа-бета отсечениями":
-                    TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MaxValue(root));
+                    TreeAlgorithms.ChangeNodeColor(root, (bool)maxTurnRadio.IsChecked ? TreeAlgorithms.MaxValue(root) : TreeAlgorithms.MinValue(root));
 
                     break;
             }
