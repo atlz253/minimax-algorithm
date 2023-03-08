@@ -31,6 +31,8 @@ namespace PZIS_4
         {
             root.Clear();
 
+            Logger.Clear();
+
             string item = (string)algorithmsBox.SelectedItem;
 
             Logger.Log($"Запущен {item}");

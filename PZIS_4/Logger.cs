@@ -33,5 +33,18 @@ namespace PZIS_4
 
             TextBlock.Text = $"{TextBlock.Text}\n\t{DateTime.Now}: {message}";
         }
+
+        /// <summary>
+        /// Очистка вывода логгера
+        /// </summary>
+        public static void Clear()
+        {
+            if (TextBlock == null)
+            {
+                return;
+            }
+
+            TextBlock.Text = string.Empty;
+        }
     }
 }
