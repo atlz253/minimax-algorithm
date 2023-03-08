@@ -31,7 +31,7 @@ namespace PZIS_4
                 return;
             }
 
-            TextBlock.Text = $"\t{DateTime.Now}: {message}\n{TextBlock.Text}";
+            TextBlock.Text = $"{TextBlock.Text}\n\t{DateTime.Now}: {message}";
         }
     }
 }
