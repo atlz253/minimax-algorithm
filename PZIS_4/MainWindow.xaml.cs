@@ -1,8 +1,4 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace PZIS_4
 {
@@ -22,7 +18,7 @@ namespace PZIS_4
 
             Logger.TextBlock = log;
 
-            root = TreeFactory.BuildTree_2();
+            root = TreeFactory.BuildTree_1();
 
             TreeCanvasDrawer.Draw(canvas, windowWidth, root);
         }
@@ -40,11 +36,11 @@ namespace PZIS_4
             switch (item)
             {
                 case "минимаксный алгоритм":
-                    TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MinMaxAlgoritm(root, (bool)maxTurnRadio.IsChecked, (bool)directMoveRadio.IsChecked));
+                    TreeAlgorithms.ChangeNodeColor(root, TreeAlgorithms.MinMaxAlgoritm(root, (bool)maxTurnRadio.IsChecked, (bool)directMoveRadio.IsChecked), (bool)directMoveRadio.IsChecked);
 
                     break;
                 case "минимаксный алгоритм с альфа-бета отсечениями":
-                    TreeAlgorithms.ChangeNodeColor(root, (bool)maxTurnRadio.IsChecked ? TreeAlgorithms.MaxValue(root, (bool)directMoveRadio.IsChecked) : TreeAlgorithms.MinValue(root, (bool)directMoveRadio.IsChecked));
+                    TreeAlgorithms.ChangeNodeColor(root, (bool)maxTurnRadio.IsChecked ? TreeAlgorithms.MaxValue(root, (bool)directMoveRadio.IsChecked) : TreeAlgorithms.MinValue(root, (bool)directMoveRadio.IsChecked), (bool)directMoveRadio.IsChecked);
 
                     break;
             }
