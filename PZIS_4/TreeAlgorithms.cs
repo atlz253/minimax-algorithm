@@ -145,7 +145,7 @@ namespace PZIS_4
 
             foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                if (betaFound)
+                if (betaFound) // Помечаем узлы пропущенными, если отсекли их
                 {
                     child.IsSkiped = true;
 
@@ -161,6 +161,8 @@ namespace PZIS_4
 
                 if(newValue >= beta)
                 {
+                    Logger.Log($"{newValue} >= β ({beta}), отсекаем дальнейшие узлы");
+
                     betaFound = true;
 
                     continue;
@@ -168,6 +170,8 @@ namespace PZIS_4
 
                 if(newValue > alpha)
                 {
+                    Logger.Log($"{newValue} > α ({alpha}), α = {newValue}");
+
                     alpha = newValue;
                 }
             }
@@ -197,7 +201,7 @@ namespace PZIS_4
 
             foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                if (alphaFound)
+                if (alphaFound) // Помечаем узлы пропущенными, если отсекли их
                 {
                     child.IsSkiped = true;
 
@@ -213,6 +217,8 @@ namespace PZIS_4
 
                 if (newValue <= alpha)
                 {
+                    Logger.Log($"{newValue} <= α ({alpha}), отсекаем дальнейшие узлы");
+
                     alphaFound = true;
 
                     continue;
@@ -220,6 +226,8 @@ namespace PZIS_4
 
                 if (newValue < beta)
                 {
+                    Logger.Log($"{newValue} < β ({beta}), β = {newValue}");
+
                     beta = newValue;
                 }
             }
