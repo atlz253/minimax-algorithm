@@ -101,7 +101,7 @@ namespace PZIS_4
         public void Clear()
         {
             isIncludedNode = false;
-            isSkiped = false;
+            isSkiped = true;
 
             if (Childrens.Count != 0)
             {

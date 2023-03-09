@@ -63,6 +63,8 @@ namespace PZIS_4
         /// <returns>Значение узла</returns>
         public static int MinMaxAlgoritm(Node root, bool IsMax, bool direction)
         {
+            root.IsSkiped = false;
+
             int min = int.MaxValue;
             int max = int.MinValue;
 
@@ -108,20 +110,18 @@ namespace PZIS_4
         /// </summary>
         /// <param name="root">Корень дерева</param>
         /// <param name="value">Значение решения</param>
-        public static void ChangeNodeColor(Node root, bool direction, int value, bool skip = false)
+        public static void ChangeNodeColor(Node root, int value, bool direction)
         {
-            if (skip || root.Value == Node.UndifinedValue)
-            {
-                root.IsSkiped = true;
-            }
-            else if (root.Value == value && (root.Parent == null || root.Parent.IsSolutionNode))
-            {
-                root.IsSolutionNode = true;
-            }
+            root.IsSolutionNode = true;
 
             foreach (Node node in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                ChangeNodeColor(node, direction, value, root.IsSkiped);
+                if (node.Value == value)
+                {
+                    ChangeNodeColor(node, value, direction);
+
+                    return;
+                }
             }
         }
 
@@ -134,6 +134,8 @@ namespace PZIS_4
         /// <returns>Значение узла</returns>
         public static int MaxValue(Node root, bool direction, int alpha = int.MinValue, int beta = int.MaxValue)
         {
+            root.IsSkiped = false;
+
             if (root.Childrens.Count == 0)
             {
                 return root.Value;
@@ -141,17 +143,8 @@ namespace PZIS_4
 
             int value = int.MinValue;
 
-            bool betaFound = false;
-
             foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                if (betaFound) // Помечаем узлы пропущенными, если отсекли их
-                {
-                    child.IsSkiped = true;
-
-                    continue;
-                }
-
                 int newValue = MinValue(child, direction, alpha, beta);
 
                 if (newValue > value)
@@ -159,19 +152,15 @@ namespace PZIS_4
                     value = newValue;
                 }
 
-                if(newValue >= beta)
+                if (newValue >= beta)
                 {
-                    Logger.Log($"{newValue} >= β ({beta}), отсекаем дальнейшие узлы");
+                    root.Value = value;
 
-                    betaFound = true;
-
-                    continue;
+                    return value;
                 }
 
-                if(newValue > alpha)
+                if (newValue > alpha)
                 {
-                    Logger.Log($"{newValue} > α ({alpha}), α = {newValue}");
-
                     alpha = newValue;
                 }
             }
@@ -190,6 +179,8 @@ namespace PZIS_4
         /// <returns>Значение узла</returns>
         public static int MinValue(Node root, bool direction, int alpha = int.MinValue, int beta = int.MaxValue)
         {
+            root.IsSkiped = false;
+
             if (root.Childrens.Count == 0)
             {
                 return root.Value;
@@ -197,17 +188,8 @@ namespace PZIS_4
 
             int value = int.MaxValue;
 
-            bool alphaFound = false;
-
             foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                if (alphaFound) // Помечаем узлы пропущенными, если отсекли их
-                {
-                    child.IsSkiped = true;
-
-                    continue;
-                }
-
                 int newValue = MaxValue(child, direction, alpha, beta);
 
                 if (newValue < value)
@@ -217,17 +199,13 @@ namespace PZIS_4
 
                 if (newValue <= alpha)
                 {
-                    Logger.Log($"{newValue} <= α ({alpha}), отсекаем дальнейшие узлы");
+                    root.Value = value;
 
-                    alphaFound = true;
-
-                    continue;
+                    return value;
                 }
 
                 if (newValue < beta)
                 {
-                    Logger.Log($"{newValue} < β ({beta}), β = {newValue}");
-
                     beta = newValue;
                 }
             }
