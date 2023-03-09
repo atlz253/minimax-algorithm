@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System.Drawing;
+using System.Numerics;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
@@ -14,6 +16,8 @@ namespace PZIS_4
         private Vector2 center = Vector2.Zero;
 
         private Node? model;
+
+        private int knocks = 0;
 
         /// <summary>
         /// Центр окружности
@@ -102,6 +106,25 @@ namespace PZIS_4
             {
                 textBox.Text = Model.Value.ToString();
             }
+        }
+
+        private void textBox_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (!TextBox.IsReadOnly)
+            {
+                return;
+            }
+
+            knocks++;
+
+            if (knocks != 8)
+            {
+                return;
+            }
+
+            MessageBox.Show("В дверь постучали 8 раз.\r\n\r\n- Осьминог, – догадался Штирлиц.\r\n\r\n- Программисты, которым нечем заняться, – парировал осьминог.");
+
+            knocks = 0;
         }
     }
 }
