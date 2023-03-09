@@ -61,12 +61,12 @@ namespace PZIS_4
         /// <param name="root">Корень дерева</param>
         /// <param name="IsMax">Минимум или максимум ищется на уровне</param>
         /// <returns>Значение узла</returns>
-        public static int MinMaxAlgoritm(Node root, bool IsMax, bool direction)
+        public static double MinMaxAlgoritm(Node root, bool IsMax, bool direction)
         {
             root.IsSkiped = false;
 
-            int min = int.MaxValue;
-            int max = int.MinValue;
+            double min = double.MaxValue;
+            double max = double.MinValue;
 
             if (root.Childrens.Count == 0)
             {
@@ -75,7 +75,7 @@ namespace PZIS_4
 
             foreach (Node node in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                int value = MinMaxAlgoritm(node, !IsMax, direction);
+                double value = MinMaxAlgoritm(node, !IsMax, direction);
 
                 if (IsMax)
                 {
@@ -110,7 +110,7 @@ namespace PZIS_4
         /// </summary>
         /// <param name="root">Корень дерева</param>
         /// <param name="value">Значение решения</param>
-        public static void ChangeNodeColor(Node root, int value, bool direction)
+        public static void ChangeNodeColor(Node root, double value, bool direction)
         {
             root.IsSolutionNode = true;
 
@@ -132,8 +132,10 @@ namespace PZIS_4
         /// <param name="alpha">Альфа</param>
         /// <param name="beta">Бета</param>
         /// <returns>Значение узла</returns>
-        public static int MaxValue(Node root, bool direction, int alpha = int.MinValue, int beta = int.MaxValue)
+        public static double MaxValue(Node root, bool direction, double alpha = double.NegativeInfinity, double beta = double.PositiveInfinity)
         {
+            Logger.Log($"MaxValue [узел номер {root.Id}]: запуск алгоритма с α = {alpha} β = {beta}");
+
             root.IsSkiped = false;
 
             if (root.Childrens.Count == 0)
@@ -141,11 +143,11 @@ namespace PZIS_4
                 return root.Value;
             }
 
-            int value = int.MinValue;
+            double value = double.MinValue;
 
             foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                int newValue = MinValue(child, direction, alpha, beta);
+                double newValue = MinValue(child, direction, alpha, beta);
 
                 if (newValue > value)
                 {
@@ -156,6 +158,8 @@ namespace PZIS_4
                 {
                     root.Value = value;
 
+                    Logger.Log($"MaxValue [узел номер {root.Id}]: {newValue} >= β({beta}), производим отсечение");
+
                     return value;
                 }
 
@@ -163,6 +167,8 @@ namespace PZIS_4
                 {
                     alpha = newValue;
                 }
+
+                Logger.Log($"MaxValue [узел номер {root.Id}]: обработан узел {child.Id}, теперь α = {alpha} β = {beta}");
             }
 
             root.Value = value;
@@ -177,8 +183,10 @@ namespace PZIS_4
         /// <param name="alpha">Альфа</param>
         /// <param name="beta">Бета</param>
         /// <returns>Значение узла</returns>
-        public static int MinValue(Node root, bool direction, int alpha = int.MinValue, int beta = int.MaxValue)
+        public static double MinValue(Node root, bool direction, double alpha = double.NegativeInfinity, double beta = double.PositiveInfinity)
         {
+            Logger.Log($"MinValue [узел номер {root.Id}]: запуск алгоритма с α = {alpha} β = {beta}");
+
             root.IsSkiped = false;
 
             if (root.Childrens.Count == 0)
@@ -186,11 +194,12 @@ namespace PZIS_4
                 return root.Value;
             }
 
-            int value = int.MaxValue;
+            double value = int.MaxValue;
 
             foreach (Node child in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                int newValue = MaxValue(child, direction, alpha, beta);
+                double newValue = MaxValue(child, direction, alpha, beta);
+
 
                 if (newValue < value)
                 {
@@ -199,6 +208,8 @@ namespace PZIS_4
 
                 if (newValue <= alpha)
                 {
+                    Logger.Log($"MinValue [узел номер {root.Id}]: {newValue} <= α({alpha}), производим отсечение");
+                    
                     root.Value = value;
 
                     return value;
@@ -208,6 +219,8 @@ namespace PZIS_4
                 {
                     beta = newValue;
                 }
+
+                Logger.Log($"MinValue [узел номер {root.Id}]: обработан узел {child.Id}, теперь α = {alpha} β = {beta}");
             }
 
             root.Value = value;

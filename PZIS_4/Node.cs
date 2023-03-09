@@ -7,9 +7,9 @@ namespace PZIS_4
     /// </summary>
     public class Node
     {
-        public const int UndifinedValue = int.MaxValue; // Неизвестное значение узла
+        public const double UndifinedValue = double.MaxValue; // Неизвестное значение узла
 
-        private int value = UndifinedValue;
+        private double value = UndifinedValue;
 
         private Node? parent;
 
@@ -17,6 +17,8 @@ namespace PZIS_4
 
         private bool isIncludedNode = false;
         private bool isSkiped = false;
+
+        private int id;
 
         /// <summary>
         /// Дочерние узлы
@@ -36,7 +38,7 @@ namespace PZIS_4
         /// <summary>
         /// Значение узла
         /// </summary>
-        public int Value
+        public double Value
         {
             get => value;
 
@@ -63,12 +65,14 @@ namespace PZIS_4
             set => isSkiped = value;
         }
 
-        public Node()
-        {
+        public int Id => id;
 
+        public Node(int id)
+        {
+            this.id = id;
         }
 
-        public Node(int value) : base()
+        public Node(int id, int value) : this(id)
         {
             Value = value;
         }

@@ -11,23 +11,25 @@
         /// <returns>Корень дерева</returns>
         public static Node BuildTree_2()
         {
-            Node root = new();
+            int id = 0;
+
+            Node root = new(++id);
 
             // Формат имени l<уровень>_<индекс узла на этом уровне>
-            Node l1_0 = new();
-            Node l1_1 = new();
-            Node l1_2 = new();
+            Node l1_0 = new(++id);
+            Node l1_1 = new(++id);
+            Node l1_2 = new(++id);
 
             root.Add(l1_0);
             root.Add(l1_1);
             root.Add(l1_2);
 
-            Node l2_0 = new();
-            Node l2_1 = new();
-            Node l2_2 = new();
-            Node l2_3 = new();
-            Node l2_4 = new();
-            Node l2_5 = new();
+            Node l2_0 = new(++id);
+            Node l2_1 = new(++id);
+            Node l2_2 = new(++id);
+            Node l2_3 = new(++id);
+            Node l2_4 = new(++id);
+            Node l2_5 = new(++id);
 
             l1_0.Add(l2_0);
             l1_0.Add(l2_1);
@@ -38,21 +40,21 @@
             l1_2.Add(l2_4);
             l1_2.Add(l2_5);
 
-            Node l3_0 = new();
-            Node l3_1 = new();
-            Node l3_2 = new();
-            Node l3_3 = new();
-            Node l3_4 = new();
-            Node l3_5 = new();
-            Node l3_6 = new();
-            Node l3_7 = new();
-            Node l3_8 = new();
-            Node l3_9 = new();
-            Node l3_10 = new();
-            Node l3_11 = new();
-            Node l3_12 = new();
-            Node l3_13 = new();
-            Node l3_14 = new();
+            Node l3_0 = new(++id);
+            Node l3_1 = new(++id);
+            Node l3_2 = new(++id);
+            Node l3_3 = new(++id);
+            Node l3_4 = new(++id);
+            Node l3_5 = new(++id);
+            Node l3_6 = new(++id);
+            Node l3_7 = new(++id);
+            Node l3_8 = new(++id);
+            Node l3_9 = new(++id);
+            Node l3_10 = new(++id);
+            Node l3_11 = new(++id);
+            Node l3_12 = new(++id);
+            Node l3_13 = new(++id);
+            Node l3_14 = new(++id);
 
             l2_0.Add(l3_0);
             l2_0.Add(l3_1);
@@ -75,42 +77,42 @@
             l2_5.Add(l3_13);
             l2_5.Add(l3_14);
 
-            Node l4_0 = new(4);
-            Node l4_1 = new(3);
-            Node l4_2 = new(6);
-            Node l4_3 = new(5);
-            Node l4_4 = new(2);
-            Node l4_5 = new(7);
-            Node l4_6 = new(8);
-            Node l4_7 = new(3);
-            Node l4_8 = new(2);
-            Node l4_9 = new(7);
-            Node l4_10 = new(6);
-            Node l4_11 = new(6);
-            Node l4_12 = new(9);
-            Node l4_13 = new(8);
-            Node l4_14 = new(8);
-            Node l4_15 = new(4);
-            Node l4_16 = new(3);
-            Node l4_17 = new(1);
-            Node l4_18 = new(6);
-            Node l4_19 = new(5);
-            Node l4_20 = new(4);
-            Node l4_21 = new(4);
-            Node l4_22 = new(3);
-            Node l4_23 = new(5);
-            Node l4_24 = new(6);
-            Node l4_25 = new(7);
-            Node l4_26 = new(7);
-            Node l4_27 = new(7);
-            Node l4_28 = new(4);
-            Node l4_29 = new(3);
-            Node l4_30 = new(2);
-            Node l4_31 = new(6);
-            Node l4_32 = new(7);
-            Node l4_33 = new(9);
-            Node l4_34 = new(8);
-            Node l4_35 = new(9);
+            Node l4_0 = new(++id, 4);
+            Node l4_1 = new(++id, 3);
+            Node l4_2 = new(++id, 6);
+            Node l4_3 = new(++id, 5);
+            Node l4_4 = new(++id, 2);
+            Node l4_5 = new(++id, 7);
+            Node l4_6 = new(++id, 8);
+            Node l4_7 = new(++id, 3);
+            Node l4_8 = new(++id, 2);
+            Node l4_9 = new(++id, 7);
+            Node l4_10 = new(++id, 6);
+            Node l4_11 = new(++id, 6);
+            Node l4_12 = new(++id, 9);
+            Node l4_13 = new(++id, 8);
+            Node l4_14 = new(++id, 8);
+            Node l4_15 = new(++id, 4);
+            Node l4_16 = new(++id, 3);
+            Node l4_17 = new(++id, 1);
+            Node l4_18 = new(++id, 6);
+            Node l4_19 = new(++id, 5);
+            Node l4_20 = new(++id, 4);
+            Node l4_21 = new(++id, 4);
+            Node l4_22 = new(++id, 3);
+            Node l4_23 = new(++id, 5);
+            Node l4_24 = new(++id, 6);
+            Node l4_25 = new(++id, 7);
+            Node l4_26 = new(++id, 7);
+            Node l4_27 = new(++id, 7);
+            Node l4_28 = new(++id, 4);
+            Node l4_29 = new(++id, 3);
+            Node l4_30 = new(++id, 2);
+            Node l4_31 = new(++id, 6);
+            Node l4_32 = new(++id, 7);
+            Node l4_33 = new(++id, 9);
+            Node l4_34 = new(++id, 8);
+            Node l4_35 = new(++id, 9);
 
             l3_0.Add(l4_0);
             l3_0.Add(l4_1);
@@ -172,24 +174,26 @@
         /// <returns>Корень дерева</returns>
         public static Node BuildTree_1()
         {
-            Node root = new();
+            int id = 0;
+
+            Node root = new(++id);
 
             // Формат имени l<уровень>_<индекс узла на этом уровне>
-            Node l1_0 = new();
-            Node l1_1 = new();
-            Node l1_2 = new();
+            Node l1_0 = new(++id);
+            Node l1_1 = new(++id);
+            Node l1_2 = new(++id);
 
             root.Add(l1_0);
             root.Add(l1_1);
             root.Add(l1_2);
 
-            Node l2_0 = new();
-            Node l2_1 = new();
-            Node l2_2 = new();
-            Node l2_3 = new();
-            Node l2_4 = new();
-            Node l2_5 = new();
-            Node l2_6 = new();
+            Node l2_0 = new(++id);
+            Node l2_1 = new(++id);
+            Node l2_2 = new(++id);
+            Node l2_3 = new(++id);
+            Node l2_4 = new(++id);
+            Node l2_5 = new(++id);
+            Node l2_6 = new(++id);
 
             l1_0.Add(l2_0);
             l1_0.Add(l2_1);
@@ -201,21 +205,21 @@
             l1_2.Add(l2_5);
             l1_2.Add(l2_6);
 
-            Node l3_0 = new();
-            Node l3_1 = new();
-            Node l3_2 = new();
-            Node l3_3 = new();
-            Node l3_4 = new();
-            Node l3_5 = new();
-            Node l3_6 = new();
-            Node l3_7 = new();
-            Node l3_8 = new();
-            Node l3_9 = new();
-            Node l3_10 = new();
-            Node l3_11 = new();
-            Node l3_12 = new();
-            Node l3_13 = new();
-            Node l3_14 = new();
+            Node l3_0 = new(++id);
+            Node l3_1 = new(++id);
+            Node l3_2 = new(++id);
+            Node l3_3 = new(++id);
+            Node l3_4 = new(++id);
+            Node l3_5 = new(++id);
+            Node l3_6 = new(++id);
+            Node l3_7 = new(++id);
+            Node l3_8 = new(++id);
+            Node l3_9 = new(++id);
+            Node l3_10 = new(++id);
+            Node l3_11 = new(++id);
+            Node l3_12 = new(++id);
+            Node l3_13 = new(++id);
+            Node l3_14 = new(++id);
 
             l2_0.Add(l3_0);
             l2_0.Add(l3_1);
@@ -239,42 +243,42 @@
 
             l2_6.Add(l3_14);
 
-            Node l4_0 = new(3);
-            Node l4_1 = new(2);
-            Node l4_2 = new(1);
-            Node l4_3 = new(0);
-            Node l4_4 = new(3);
-            Node l4_5 = new(4);
-            Node l4_6 = new(3);
-            Node l4_7 = new(3);
-            Node l4_8 = new(2);
-            Node l4_9 = new(5);
-            Node l4_10 = new(4);
-            Node l4_11 = new(5);
-            Node l4_12 = new(6);
-            Node l4_13 = new(5);
-            Node l4_14 = new(6);
-            Node l4_15 = new(5);
-            Node l4_16 = new(4);
-            Node l4_17 = new(2);
-            Node l4_18 = new(1);
-            Node l4_19 = new(5);
-            Node l4_20 = new(6);
-            Node l4_21 = new(1);
-            Node l4_22 = new(0);
-            Node l4_23 = new(2);
-            Node l4_24 = new(7);
-            Node l4_25 = new(6);
-            Node l4_26 = new(4);
-            Node l4_27 = new(3);
-            Node l4_28 = new(1);
-            Node l4_29 = new(3);
-            Node l4_30 = new(2);
-            Node l4_31 = new(1);
-            Node l4_32 = new(0);
-            Node l4_33 = new(2);
-            Node l4_34 = new(2);
-            Node l4_35 = new(1);
+            Node l4_0 = new(++id, 3);
+            Node l4_1 = new(++id, 2);
+            Node l4_2 = new(++id, 1);
+            Node l4_3 = new(++id, 0);
+            Node l4_4 = new(++id, 3);
+            Node l4_5 = new(++id, 4);
+            Node l4_6 = new(++id, 3);
+            Node l4_7 = new(++id, 3);
+            Node l4_8 = new(++id, 2);
+            Node l4_9 = new(++id, 5);
+            Node l4_10 = new(++id, 4);
+            Node l4_11 = new(++id, 5);
+            Node l4_12 = new(++id, 6);
+            Node l4_13 = new(++id, 5);
+            Node l4_14 = new(++id, 6);
+            Node l4_15 = new(++id, 5);
+            Node l4_16 = new(++id, 4);
+            Node l4_17 = new(++id, 2);
+            Node l4_18 = new(++id, 1);
+            Node l4_19 = new(++id, 5);
+            Node l4_20 = new(++id, 6);
+            Node l4_21 = new(++id, 1);
+            Node l4_22 = new(++id, 0);
+            Node l4_23 = new(++id, 2);
+            Node l4_24 = new(++id, 7);
+            Node l4_25 = new(++id, 6);
+            Node l4_26 = new(++id, 4);
+            Node l4_27 = new(++id, 3);
+            Node l4_28 = new(++id, 1);
+            Node l4_29 = new(++id, 3);
+            Node l4_30 = new(++id, 2);
+            Node l4_31 = new(++id, 1);
+            Node l4_32 = new(++id, 0);
+            Node l4_33 = new(++id, 2);
+            Node l4_34 = new(++id, 2);
+            Node l4_35 = new(++id, 1);
 
             l3_0.Add(l4_0);
             l3_0.Add(l4_1);

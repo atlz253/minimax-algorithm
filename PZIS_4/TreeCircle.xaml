@@ -5,9 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PZIS_4"
              mc:Ignorable="d" 
-             d:DesignHeight="30" d:DesignWidth="30">
+             d:DesignHeight="35" d:DesignWidth="35">
     <Grid>
+        <Rectangle Width="35" Height="35"/>
         <Ellipse x:Name="ellipse" Stroke="Black" Fill="#FFD2D2D2" Width="30" Height="30"/>
+        <Label x:Name="idLabel" Content="00" FontSize="8" Margin="-6,-8,0,0"/>
         <TextBox x:Name="textBox" Width="30" VerticalAlignment="Center" TextAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" MaxLength="3" MaxLines="1" TextChanged="textBox_TextChanged"  />
     </Grid>
 </UserControl>

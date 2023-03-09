@@ -9,7 +9,7 @@ namespace PZIS_4
     /// </summary>
     public partial class TreeCircle : UserControl
     {
-        public const int CircleRadius = 15;
+        public const int CircleRadius = 17;
 
         private Vector2 center = Vector2.Zero;
 
@@ -44,6 +44,8 @@ namespace PZIS_4
                 model = value;
 
                 UpdateColor();
+
+                idLabel.Content = model.Id;
             }
         }
 

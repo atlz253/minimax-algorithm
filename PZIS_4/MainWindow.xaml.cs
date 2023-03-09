@@ -18,7 +18,7 @@ namespace PZIS_4
 
             Logger.TextBlock = log;
 
-            root = TreeFactory.BuildTree_1();
+            root = TreeFactory.BuildTree_2();
 
             TreeCanvasDrawer.Draw(canvas, windowWidth, root);
         }
