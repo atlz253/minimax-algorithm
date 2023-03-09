@@ -108,7 +108,7 @@ namespace PZIS_4
         /// </summary>
         /// <param name="root">Корень дерева</param>
         /// <param name="value">Значение решения</param>
-        public static void ChangeNodeColor(Node root, int value, bool skip = false)
+        public static void ChangeNodeColor(Node root, bool direction, int value, bool skip = false)
         {
             if (skip || root.Value == Node.UndifinedValue)
             {
@@ -119,9 +119,9 @@ namespace PZIS_4
                 root.IsSolutionNode = true;
             }
 
-            foreach (Node node in root.Childrens)
+            foreach (Node node in (direction) ? root.Childrens : root.Childrens.Reverse())
             {
-                ChangeNodeColor(node, value, root.IsSkiped);
+                ChangeNodeColor(node, direction, value, root.IsSkiped);
             }
         }
 
